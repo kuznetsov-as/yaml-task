@@ -3,5 +3,7 @@ version: "3.8"
 services:
   myapp:
     build: .
+    environment:
+      LOG_PATH_CONTAINER: ${LOG_PATH_CONTAINER}
     volumes:
-      - ./data:/myapp/data
+      - ${LOG_PATH_HOST}:${LOG_PATH_CONTAINER}

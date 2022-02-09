@@ -2,8 +2,13 @@ import java.io.FileWriter
 import java.text.SimpleDateFormat
 import java.util.*
 
+
+
 fun main() {
-    val fileName = "./data/${getFileName()}.txt"
+    val envVar : String = System.getenv("LOG_PATH_CONTAINER")
+        ?: throw Exception("Переменная окружения LOG_PATH_CONTAINER не найдена")
+
+    val fileName = "$envVar${getFileName()}.txt"
     println("Название файла: $fileName")
     while (true) {
         val fileWriter = FileWriter(fileName, true)
